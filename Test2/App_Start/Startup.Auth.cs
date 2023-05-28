@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Test2.Models;
+using ZooApplication.Models;
 
-namespace Test2
+namespace ZooApplication
 {
     public partial class Startup
     {

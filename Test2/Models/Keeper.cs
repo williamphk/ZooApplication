@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace Test2.Models
+namespace ZooApplication.Models
 {
     public class Keeper
     {

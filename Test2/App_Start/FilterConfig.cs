@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Test2
+namespace ZooApplication
 {
     public class FilterConfig
     {

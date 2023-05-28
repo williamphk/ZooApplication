@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Test2.Models;
+using ZooApplication.Models;
 
-namespace Test2.Controllers
+namespace ZooApplication.Controllers
 {
     [Authorize]
     public class ManageController : Controller

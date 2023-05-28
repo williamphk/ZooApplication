@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Test2.Models
+namespace ZooApplication.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

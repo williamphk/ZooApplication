@@ -1,4 +1,4 @@
-﻿namespace Test2.Migrations
+﻿namespace ZooApplication.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

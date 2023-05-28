@@ -8,12 +8,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Test2.Models;
+using ZooApplication.Models;
 using System.Diagnostics;
 
-namespace Test2.Controllers
+namespace ZooApplication.Controllers
 {
-    public class AnimalsDataController : ApiController
+    public class AnimalDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

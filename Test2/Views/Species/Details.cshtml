@@ -1,0 +1,23 @@
+﻿@model ZooApplication.Models.ViewModels.DetailsSpecies
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Species/List">Go back to list</a>
+<br />
+<a href="/Species/Edit/@Model.SelectedSpeices.SpeciesID">Update</a>
+<br />
+<a href="/Species/DeleteConfirm/@Model.SelectedSpeices.SpeciesID">Delete</a>
+<br />
+
+<h2>@Model.SelectedSpeices.SpeciesName</h2>
+<div>Endangered: : @Model.SelectedSpeices.SpeciesEndangered</div>
+
+<div style="margin-top: 100px">
+    <h3>Animals related to this species</h3>
+    @foreach (var animal in Model.RelatedAnimals)
+    {
+        <a href="/Animal/Details/@animal.AnimalID">@animal.AnimalName</a><br />
+    }
+
+</div>

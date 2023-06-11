@@ -35,5 +35,7 @@ namespace ZooApplication.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<ZooApplication.Models.Keeper> Keepers { get; set; }
     }
 }

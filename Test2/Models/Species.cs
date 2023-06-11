@@ -15,4 +15,11 @@ namespace ZooApplication.Models
 
         public bool SpeciesEndangered { get; set; }
     }
+
+    public class SpeciesDto
+    {
+        public int SpeciesID { get; set; }
+        public string SpeciesName { get; set; }
+        public bool SpeciesEndangered { get; set; }
+    }
 }

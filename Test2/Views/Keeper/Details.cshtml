@@ -1,0 +1,23 @@
+﻿@model ZooApplication.Models.ViewModels.DetailsKeeper
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Keeper/List">Go back to list</a>
+<br />
+<a href="/Keeper/Edit/@Model.SelectedKeeper.KeeperID">Update</a>
+<br />
+<a href="/Keeper/DeleteConfirm/@Model.SelectedKeeper.KeeperID">Delete</a>
+<br />
+
+<h2>@Model.SelectedKeeper.KeeperFirstName @Model.SelectedKeeper.KeeperLastName</h2>
+
+<div style="margin-top: 100px">
+    <h3>Responsible for:</h3>
+    @foreach (var animal in Model.KeptAnimals)
+    {
+        <a href="/Animal/Details/@animal.AnimalID">@animal.AnimalName</a><br />
+    }
+
+</div>
+

@@ -1,0 +1,33 @@
+﻿@model ZooApplication.Models.ViewModels.UpdateAnimal
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Animal</h2>
+<form action="/Animal/Update/@Model.SelectedAnimal.AnimalID" method="POST">
+    <div style="display:none;">
+        <input name="AnimalID" type="text" value="@Model.SelectedAnimal.AnimalID" />
+    </div>
+    <div>
+        <label>Name:</label>
+        <input name="AnimalName" type="text" value="@Model.SelectedAnimal.AnimalName" />
+    </div>
+    <div>
+        <label>Weight (kg):</label>
+        <input name="AnimalWeight" type="number" value="@Model.SelectedAnimal.AnimalWeight" />
+    </div>
+    <div>
+        <label>Species:</label>
+        <select name="SpeciesID">
+        @foreach (var species in Model.SpeciesOptions)
+        {
+            <option value="@species.SpeciesID">@species.SpeciesName</option>
+        }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Update Animal" />
+    </div>
+</form>
+

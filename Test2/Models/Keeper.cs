@@ -16,4 +16,12 @@ namespace ZooApplication.Models
         //A keeper can take care of many animals
         public ICollection<Animal> Animals { get; set; }
     }
+
+    public class KeeperDto
+    {
+        public int KeeperID { get; set; }
+        public string KeeperFirstName { get; set; }
+        public string KeeperLastName { get; set;}
+
+    }
 }

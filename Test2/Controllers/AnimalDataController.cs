@@ -35,6 +35,76 @@ namespace ZooApplication.Controllers
             return AnimalDtos;
         }
 
+        // GET: api/AnimalsData/ListAnimalsForSpecies
+        [HttpGet]
+        public IEnumerable<AnimalDto> ListAnimalsForSpecies(int id)
+        {
+            List<Animal> Animals = db.Animals.Where(a => a.SpeciesID == id).ToList();
+            List<AnimalDto> AnimalDtos = new List<AnimalDto>();
+
+            Animals.ForEach(a => AnimalDtos.Add(new AnimalDto()
+            {
+                AnimalID = a.AnimalID,
+                AnimalName = a.AnimalName,
+                AnimalWeight = a.AnimalWeight,
+                SpeciesID = a.SpeciesID,
+                SpeciesName = a.Species.SpeciesName
+            }));
+
+            return AnimalDtos;
+        }
+
+        // GET: api/AnimalsData/ListAnimalsForSpecies
+        [HttpGet]
+        public IEnumerable<AnimalDto> ListAnimalsForKeeper(int id)
+        {
+            List<Animal> Animals = db.Animals.Where(a => a.Keepers.Any(k => k.KeeperID == id)).ToList();
+            List<AnimalDto> AnimalDtos = new List<AnimalDto>();
+
+            Animals.ForEach(a => AnimalDtos.Add(new AnimalDto()
+            {
+                AnimalID = a.AnimalID,
+                AnimalName = a.AnimalName,
+                AnimalWeight = a.AnimalWeight,
+                SpeciesID = a.SpeciesID,
+                SpeciesName = a.Species.SpeciesName
+            }));
+
+            return AnimalDtos;
+        }
+
+        [HttpPost]
+        [Route("api/AnimalData/AssociateAnimalWithKeeper/{animalid}/{keeperid}")]
+        public IHttpActionResult AssociateAnimalWithKeeper(int animalid, int keeperid)
+        {
+            Animal SelectedAnimal = db.Animals.Include(a => a.Keepers).Where(a => a.AnimalID == animalid).FirstOrDefault();
+            Keeper SelectedKeeper = db.Keepers.Find(keeperid);  
+
+            if (SelectedAnimal == null || SelectedKeeper == null) 
+            {
+                return NotFound();
+            }
+            SelectedAnimal.Keepers.Add(SelectedKeeper);
+            db.SaveChanges();
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("api/AnimalData/UnAssociateAnimalWithKeeper/{animalid}/{keeperid}")]
+        public IHttpActionResult UnAssociateAnimalWithKeeper(int animalid, int keeperid)
+        {
+            Animal SelectedAnimal = db.Animals.Include(a => a.Keepers).Where(a => a.AnimalID == animalid).FirstOrDefault();
+            Keeper SelectedKeeper = db.Keepers.Find(keeperid);
+
+            if (SelectedAnimal == null || SelectedKeeper == null)
+            {
+                return NotFound();
+            }
+            SelectedAnimal.Keepers.Remove(SelectedKeeper);
+            db.SaveChanges();
+            return Ok();
+        }
+
         // GET: api/AnimalsData/FindAnimal/5
         [HttpGet]
         [ResponseType(typeof(Animal))]
@@ -46,6 +116,7 @@ namespace ZooApplication.Controllers
                 AnimalID = Animal.AnimalID,
                 AnimalName = Animal.AnimalName,
                 AnimalWeight = Animal.AnimalWeight,
+                SpeciesID = Animal.SpeciesID,
                 SpeciesName = Animal.Species.SpeciesName
             };
 
